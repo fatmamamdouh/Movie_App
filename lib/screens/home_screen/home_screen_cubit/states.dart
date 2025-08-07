@@ -35,3 +35,5 @@ class GetSearchingDataSuccessState extends HomeScreenStates{}
 class GetSearchingDataErrorState extends HomeScreenStates{}
 
 class GetSearchingDataLoadingState extends HomeScreenStates{}
+
+class AddToFavouriteState extends HomeScreenStates{}

@@ -21,7 +21,7 @@ class MovieDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<HomeScreenCubit, HomeScreenStates>(
         builder: (BuildContext context, state) => Scaffold(
-          body: SingleChildScrollView(
+          body: model == null ? Center(child: CircularProgressIndicator()) : SingleChildScrollView(
             child: Column(
               children: [
                 SizedBox(
@@ -67,9 +67,13 @@ class MovieDetailsScreen extends StatelessWidget {
                             contentText: "${model!.vote_average}",
                           ),
                           IconButton(
-                            onPressed: (){},
-                            icon: Icon(Icons.favorite_outline_outlined,
-                              color: Colors.red,
+                            onPressed: ()
+                            {
+                              HomeScreenCubit.get(context).addFav();
+                            },
+                            icon: Icon(
+                              HomeScreenCubit.get(context).notFav ? Icons.favorite_outline_outlined : Icons.favorite,
+                              color: HomeScreenCubit.get(context).notFav ? Colors.grey : Colors.red,
                             ),
                           ),
                         ],
@@ -162,6 +166,6 @@ class MovieDetailsScreen extends StatelessWidget {
             ),
           ),
         ),
-        listener: (BuildContext context, state) {  },);
+        listener: (BuildContext context, state) {},);
   }
 }

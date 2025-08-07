@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/models/actors_model.dart';
 import 'package:movie_app/models/specialization_model.dart';
@@ -151,5 +152,11 @@ class HomeScreenCubit extends Cubit<HomeScreenStates>
     );
   }
 
+  bool notFav = true;
 
+  void addFav()
+  {
+    notFav = !notFav;
+    emit(AddToFavouriteState());
+  }
 }
